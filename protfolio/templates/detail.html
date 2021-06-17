@@ -30,12 +30,10 @@
             color: bisque;
             border: none;
             margin: auto;
-            text-align: center;
         }
         .image{
-            /* border: 3px solid red; */
-            /* padding: 10px; */
-            margin-right: 2vw;
+            /* margin-right: 2vw; */
+            margin: auto;
         }
         #top-arrow{
             padding: 10px;
@@ -47,13 +45,21 @@
             right: 10px;
             border-radius: 5px;
         }
+        .header{
+                text-align: center;
+                align-items: center;
+        }
+        .lead{
+            padding-bottom: 5px;
+        }
         @media (max-width: 320px){
             .links a{
                 display: block;
                 margin: 2px;
             }
-            .header{
-                display: block;
+            .jumbotron-heading{
+                text-align: center;
+                align-items: center;
             }
         }
     </style>
@@ -63,42 +69,14 @@
 
     <main role="main">
 
-        <section class="jumbotron text-center">
-            <div class="container header">
-                <h1 class="jumbotron-heading">J V Sathya Krishna</h1>
-                <img src="{% static 'photo.jpeg' %}" alt="" style="width: 10vw; height: 20%;" class="float-left image">
-                <p class="lead text-muted">Hi my name is J V S Krishna, I am pursuing my B.tech 4th year in IIIT
-                    Kottayam with an average CGPA of 9.34. My area of interset are web development, Data Science
-                    (Ml, data mining), Software Devlopment, Cloud Tecchnologies and DevOps</p>
+        <div class="container header">
+                <h1 class="jumbotron-heading">Job Detail</h1>
+                <h3>{{job.companyName}}</h3>
+                <img src="{{ job.image.url }}" alt="" style="width: 10vw; height: 20%;" class="center">
+                <p class="lead text-muted">{{ job.summary }}</p>
                 <div class="links">
-                    <a href="https://www.linkedin.com/in/sathya-krishna-2001/" class="text-blue"> <i class="fab fa-linkedin"></i> LinkedIn</a>
-                    <a href="https://github.com/krishna13052001" class="text-blue"> <i class="fab fa-github-square"></i>Github</a>
-                    <a href="mailto:jvsathyakrishna18bcs@iiitkottayam.ac.in" class="text-blue"> <i class="fas fa-envelope"></i> Email me</a>
-                </p>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row">
-                    {% for job in jobs.all %}
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <h4 class="card-text text-center">{{ job.companyName }}</h4>
-                                <img class=""
-                                data-src="{{ job.image.url }}"
-                                src="{{ job.image.url }}"
-                                alt="Card image cap" height=250px>
-                                <div class="card-body">
-                                    <p class="card-text">{{job.summary}}</p>
-                                    <a class="links" href="{% url 'detail' job.id %}" class="text-blue">Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    
+                    <a href="{% url 'home' %}" class="text-blue">Back</a>
                 </div>
-            </div>
         </div>
 
     </main>

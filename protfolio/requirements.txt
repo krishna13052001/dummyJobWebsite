@@ -1,0 +1,6 @@
+Pillow==8.2.0
+psycopg2==2.8.6
+Django==3.1.2
+django-appconf==1.0.4
+gunicorn==19.6.0
+django-heroku==0.3.1
